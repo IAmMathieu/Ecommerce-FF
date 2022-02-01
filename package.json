@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "dotenv": "^15.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "pg": "^8.7.1"
+  },
+  "name": "s04e06-atelier-ofig-atomicmatho",
+  "description": "## Étape 1: Mise en place",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Atome/S04E06-atelier-OFig-AtomicMathO.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Atome/S04E06-atelier-OFig-AtomicMathO/issues"
+  },
+  "homepage": "https://github.com/O-clock-Atome/S04E06-atelier-OFig-AtomicMathO#readme"
+}

@@ -1,4 +1,6 @@
 const path = require('path');
+const dataMapper = require('../dataMapper');
+
 
 const bookmarksController = {
 
