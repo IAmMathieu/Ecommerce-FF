@@ -25,8 +25,14 @@
                   </h3>
                   <p class="card-text">Taille réelle : <%= figurine.size %></p>
                   <p class="card-text"><%= figurine.description %></p>
-                  <p class="card-text">3
-                    Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
+                  <p class="card-text">
+                    Note moyenne : 
+                  <% for (i=0; i < roundedNote; i++) { %>
+                    &#9733;
+                  <% } %>
+                  <% for (i=5; i > roundedNote; i--) { %>
+                     &#9734;
+                  <% } %>
                     <br>
                     <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
                   </p>

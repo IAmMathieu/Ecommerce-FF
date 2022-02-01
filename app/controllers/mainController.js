@@ -8,23 +8,28 @@ const categories = [
 ]
 
 const mainController = {
-
+  
   // méthode pour la page d'accueil
   homePage: async (req, res) => {
     const figurines = await dataMapper.getAllFigurines();
     for (const category of categories) {
-      category.count = await countMiddleware.countCategories(category.name)
+      category.count = await countMiddleware.countCategories(category.name);
+    }
+    for (const figurine of figurines) {
+      let moyenneReview = await countMiddleware.countNote(figurine.id)
+      figurine.note = (Math.round(moyenneReview))
     }
     res.render('accueil', { figurines, categories });
   },
-
+  
   // méthode pour la page article
   articlePage: async (req, res) => {
+    let roundedNote = 0;
     const articleId = req.params.articleId;
     const figurine = await dataMapper.getOneFigurine(articleId);
     const reviews = await dataMapper.getFigurineReview(articleId)
-
-    res.render('article', { figurine, reviews });
+    let moyenneReview = await countMiddleware.countNote(figurine.id)
+    res.render('article', { figurine, reviews, categories, roundedNote });
   }
 
 };

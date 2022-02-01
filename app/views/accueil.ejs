@@ -28,7 +28,14 @@
                   <p class="card-text"><%= figurine.description %></p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  <small class="text-muted">
+                    <% for (i=0; i < figurine.note; i++) { %>
+                      &#9733;
+                    <% } %>
+                    <% for (i=5; i > figurine.note; i--) { %>
+                       &#9734;
+                    <% } %>
+                  </small>
                   <a href="/bookmarks/add/<%= figurine.id %>" class="link-add-bookmarks">+ Ajouter aux favoris</a>
                 </div>
               </div>
