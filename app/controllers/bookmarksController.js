@@ -18,7 +18,7 @@ const bookmarksController = {
       }
       
       if (!req.session.bookmarks.find((oneFig) => oneFig.id === figurineId)) { 
-      req.session.bookmarks.push(figurine[0]) ///// CHANGER ICI figurine >> figurine[0]
+      req.session.bookmarks.push(figurine) ///// CHANGER ICI figurine >> figurine[0]
       res.redirect('/bookmarks')
     } else {
       res.redirect('/bookmarks')
