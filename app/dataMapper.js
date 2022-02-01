@@ -17,7 +17,16 @@ const dataMapper = {
                    WHERE id=${figurineId}`,
         }
         const figurine = await client.query(query);
-        return figurine.rows
+        return figurine.rows[0]
+    },
+    getFigurineReview: async (figurineId) => {
+        const query = {
+            text: `SELECT *
+                   FROM review
+                   WHERE figurine_id=${figurineId}`,
+        }
+        const reviews = await client.query(query)
+        return reviews.rows
     }
 };
 

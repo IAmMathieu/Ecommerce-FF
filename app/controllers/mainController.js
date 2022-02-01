@@ -13,10 +13,10 @@ const mainController = {
   // méthode pour la page article
   articlePage: async (req, res) => {
     const articleId = req.params.articleId;
-    const figurineArray = await dataMapper.getOneFigurine(articleId);
-    const figurine = figurineArray[0]
+    const figurine = await dataMapper.getOneFigurine(articleId);
+    const reviews = await dataMapper.getFigurineReview(articleId)
 
-    res.render('article', { figurine });
+    res.render('article', { figurine, reviews });
   }
 
 };
