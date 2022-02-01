@@ -18,7 +18,7 @@ const bookmarksController = {
       }
       
       if (!req.session.bookmarks.find((oneFig) => oneFig.id === figurineId)) { 
-      req.session.bookmarks.push(figurine)
+      req.session.bookmarks.push(figurine[0]) ///// CHANGER ICI figurine >> figurine[0]
       res.redirect('/bookmarks')
     } else {
       res.redirect('/bookmarks')
@@ -31,10 +31,11 @@ const bookmarksController = {
   },
   deleteFavoris: async (req, res) => {
     const figurineId = Number(req.params.slug);
-    const figurine = await dataMapper.getOneFigurine(figurineId);
+    console.log(figurineId);
+    console.log(req.session.bookmarks);
 
     if (req.session.bookmarks) {
-      req.session.bookmarks = req.session.bookmarks.filter(oFig => oFig === figurine);
+      req.session.bookmarks = await req.session.bookmarks.filter(oFig => oFig.id !== figurineId); //// CHANGER ici ofig === figurine >>>> ofig.id !== figurine.id
   }
   res.redirect('/bookmarks')
 }};
