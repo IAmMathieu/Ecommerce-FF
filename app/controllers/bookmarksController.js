@@ -1,16 +1,60 @@
-const path = require('path');
 const dataMapper = require('../dataMapper');
 
 
 const bookmarksController = {
-
+  
   // méthode pour afficher les favoris
-  bookmarksPage: (request, response) => {
-    const filePath = path.resolve(__dirname + '/../../integration/favoris.html');
-    response.sendFile(filePath);
-  }
+  bookmarksPage: (req, res) => {
+      res.render('favoris', { bookmarks: req.session.bookmarks });
+  },
+  addFavoris: async (req, res) => {
+    const figurineId = Number(req.params.figurineId); // on récupère l'id de la figurine incluse dans l'adresse de l'article /bookmarks/add/:figurineId
+    try {
+      const figurine = await dataMapper.getOneFigurine(figurineId); // On fait une requete SQL getOneFigurine avec l'argument figurineId ce qui retourne la data de l'article voulu
+      // const figurine = figurineArray[0]; // on récupère le 1er objet de l'array retourné par la requete SQL
 
-};
+      if (!req.session.bookmarks) {
+        req.session.bookmarks = []
+      }
+      
+      if (!req.session.bookmarks.find((oneFig) => oneFig.id === figurineId)) { 
+      req.session.bookmarks.push(figurine)
+      res.redirect('/bookmarks')
+    } else {
+      res.redirect('/bookmarks')
+    }
+    
+    } catch (error) {
+      console.log(error);
+    }
+    
+  },
+  deleteFavoris: async (req, res) => {
+    const figurineId = Number(req.params.slug);
+    const figurine = await dataMapper.getOneFigurine(figurineId);
+
+    if (req.session.bookmarks) {
+      req.session.bookmarks = req.session.bookmarks.filter(oFig => oFig === figurine);
+  }
+  res.redirect('/bookmarks')
+}};
 
 
 module.exports = bookmarksController;
+
+// const userController = {
+//   viewLogin(req, res) {
+//       res.render('login');
+//   },
+//   loginAction(req, res) {
+
+//       // je vais stocker le user dans ma SESSION
+//       // attention, pour manipuler la session, c'est bien REQ.session
+//       // et non pas RES.session :) hé hé hé :) 
+//       req.session.first_name = req.body.first_name;
+
+//       res.redirect('/');
+//   }
+// }
+
+// module.exports = userController;

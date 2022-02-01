@@ -16,40 +16,26 @@
               <th></th>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <img class="img-thumbnail img-cart-list" src="./images/tifa.png" alt="">
-                  <div class="item-description">
-                      <h5 class="item-title">Tifa</h5>
-                  </div>
-                </td>
+              <% if (bookmarks) { %>
+                <% for (const figurine of bookmarks) {%>
+                  <tr>
+                    <td>
+                      <img class="img-thumbnail img-cart-list" src="/images/<%= figurine[0].name.toLowerCase() %>.png" alt="">
+                      <div class="item-description">
+                          <h5 class="item-title"><%= figurine[0].name %></h5>
+                      </div>
+                    </td>
 
-                <td>
-                  <p class="item-subtotal">$24.99</p>
-                </td>
+                    <td>
+                      <p class="item-subtotal"><%= figurine[0].price %></p>
+                    </td>
 
-                <td>
-                  <a href="#">Enlever de la liste</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <img class="img-thumbnail img-cart-list" src="./images/cloud.png" alt="">
-                  <div class="item-description">
-                      <h5 class="item-title">Cloud</h5>
-                  </div>
-                </td>
-
-                <td>
-                  <p class="item-subtotal">$49.98</p>
-                </td>
-
-                <td>
-                  <a href="#">Enlever de la liste</a>
-                </td>
-              </tr>
-
+                    <td>
+                      <a href="/bookmarks/delete/<%= figurine[0].id %>">Enlever de la liste</a>
+                    </td>
+                  </tr>
+                  <% } %>
+                <% } %>
           </table>
 
           <div class="row">

@@ -7,7 +7,7 @@ const mainController = {
   // méthode pour la page d'accueil
   homePage: async (req, res) => {
     const figurines = await dataMapper.getAllFigurines();
-    res.render('accueil', { figurines});
+    res.render('accueil', { figurines });
   },
 
   // méthode pour la page article
@@ -16,7 +16,7 @@ const mainController = {
     const figurineArray = await dataMapper.getOneFigurine(articleId);
     const figurine = figurineArray[0]
 
-    res.render('article', { figurine});
+    res.render('article', { figurine });
   }
 
 };
