@@ -3,17 +3,17 @@
     <h1 class="my-4">O'Fig</h1>
     <h5>Catégories</h5>
     <div class="list-group">
-      <a class="list-group-item d-flex justify-content-between align-items-center" href="#">
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/category/gentil">
           Les gentils
-        <span class="badge badge-primary badge-pill">4</span>
+        <span class="badge badge-primary badge-pill"><%= categories[0].count %></span>
       </a>
-      <a class="list-group-item d-flex justify-content-between align-items-center" href="#">
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/category/mechant">
           Les méchants
-        <span class="badge badge-primary badge-pill">3</span>
+        <span class="badge badge-primary badge-pill"><%= categories[1].count %></span>
       </a>
-      <a class="list-group-item d-flex justify-content-between align-items-center" href="#">
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="/category/animal">
           Les animaux
-        <span class="badge badge-primary badge-pill">1</span>
+        <span class="badge badge-primary badge-pill"><%= categories[2].count %></span>
       </a>
     </div>
 

@@ -6,7 +6,7 @@
   <div class="container container-main">
 
     <div class="row">
-<%- include('./partials/categories.ejs')-%>
+<%- include('./partials/categories.ejs', {categories})-%>
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-9">
@@ -17,7 +17,7 @@
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
                 <a href="/article/<%= figurine.id  %>">
-                  <img class="card-img-top" src="./images/<%= figurine.name.toLowerCase() %>.png" alt="">
+                  <img class="card-img-top" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
                   <div class="badge-category badge badge-pill badge-<%= figurine.category.toLowerCase() %>"><%= figurine.category %></div>
                 </a>
                 <div class="card-body">

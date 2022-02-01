@@ -19,6 +19,16 @@ const dataMapper = {
         const figurine = await client.query(query);
         return figurine.rows[0]
     },
+    getAllFigurinesByCategory: async (category) => {
+        const query = {
+            text: `SELECT *
+                   FROM figurine
+                   WHERE category='${category}'`
+        }
+        const result = await client.query(query);
+        return result.rows
+
+    },
     getFigurineReview: async (figurineId) => {
         const query = {
             text: `SELECT *
@@ -27,6 +37,15 @@ const dataMapper = {
         }
         const reviews = await client.query(query)
         return reviews.rows
+    },
+    getCategoryCount: async (category) => {
+        const query = {
+            text: `SELECT COUNT(*)
+                   FROM figurine
+                   WHERE category='${category}'`
+        }
+        const categoryCount = await client.query(query)
+        return categoryCount.rows[0]
     }
 };
 
