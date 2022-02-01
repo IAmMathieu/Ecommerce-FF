@@ -14,13 +14,17 @@ const dataMapper = {
         const query = {
             text: `SELECT *
                    FROM figurine
-                   WHERE id=$1`,
-            value: [figurineId]
+                   WHERE id=${figurineId}`,
         }
         const figurine = await client.query(query);
         return figurine.rows
     }
 };
+
+// attention les query retournent toujours un array d'objet ex
+
+
+
 
 module.exports = dataMapper;
 

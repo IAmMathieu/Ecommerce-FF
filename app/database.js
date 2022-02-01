@@ -1,5 +1,5 @@
 // 1. require le module
-const pg = require('pg');
+const { Client } = require('pg');
 
 const client = new Client({
     user: process.env.PGUSER,

@@ -5,15 +5,18 @@ const dataMapper = require('../dataMapper');
 const mainController = {
 
   // méthode pour la page d'accueil
-  homePage: (request, response) => {
-    const filePath = path.resolve(__dirname + '/../../integration/accueil.html');
-    response.sendFile(filePath);
+  homePage: async (req, res) => {
+    const figurines = await dataMapper.getAllFigurines();
+    res.render('accueil', { figurines});
   },
 
   // méthode pour la page article
-  articlePage: (request, response) => {
-    const filePath = path.resolve(__dirname + '/../../integration/article.html');
-    response.sendFile(filePath);
+  articlePage: async (req, res) => {
+    const articleId = req.params.articleId;
+    const figurineArray = await dataMapper.getOneFigurine(articleId);
+    const figurine = figurineArray[0]
+
+    res.render('article', { figurine});
   }
 
 };
