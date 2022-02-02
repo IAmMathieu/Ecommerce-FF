@@ -24,12 +24,11 @@ const mainController = {
   
   // méthode pour la page article
   articlePage: async (req, res) => {
-    let roundedNote = 0;
     const articleId = req.params.articleId;
     const figurine = await dataMapper.getOneFigurine(articleId);
     const reviews = await dataMapper.getFigurineReview(articleId)
-    let moyenneReview = await countMiddleware.countNote(figurine.id)
-    res.render('article', { figurine, reviews, categories, moyenneReview });
+    let roundedNote = await countMiddleware.countNote(figurine.id)
+    res.render('article', { figurine, reviews, categories, roundedNote });
   }
 
 };
