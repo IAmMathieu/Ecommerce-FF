@@ -29,7 +29,7 @@ const mainController = {
     const figurine = await dataMapper.getOneFigurine(articleId);
     const reviews = await dataMapper.getFigurineReview(articleId)
     let moyenneReview = await countMiddleware.countNote(figurine.id)
-    res.render('article', { figurine, reviews, categories, roundedNote });
+    res.render('article', { figurine, reviews, categories, moyenneReview });
   }
 
 };
